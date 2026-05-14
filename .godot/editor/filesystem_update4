@@ -1,0 +1,9 @@
+res://scenes/void/Void.tscn
+res://characters/Courtney.dch
+res://scenes/void/VoidDialog.cs
+res://system/Player.cs
+res://system/GameManager.cs
+res://system/MainMenu.cs
+res://scenes/void/Boulder.cs
+res://scenes/void/VoidTrans.cs
+res://scenes/void/VoidPuzzle1.tscn
