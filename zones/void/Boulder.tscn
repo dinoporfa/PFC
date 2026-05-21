@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cxkuvejpctqas"]
+
+[ext_resource type="Script" uid="uid://cuc0a0inq0c35" path="res://zones/void/Boulder.cs" id="1_dppsr"]
+[ext_resource type="Texture2D" uid="uid://bmf3h5a6ihqkv" path="res://assets/overworld/boulder.png" id="2_y8c8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufbrx"]
+size = Vector2(16, 16)
+
+[node name="Boulder" type="CharacterBody2D" unique_id=760106579]
+script = ExtResource("1_dppsr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=913561958]
+position = Vector2(8, 8)
+texture = ExtResource("2_y8c8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=456087898]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ufbrx")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1342341061]
+position = Vector2(8, 8)
+target_position = Vector2(0, 16)

@@ -1,51 +1,60 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Player : CharacterBody2D
 {
-	
-	int speed = 4;
+	GameManager gm;
 	const int tileSize = 16;
+	static int tilesMoved = 0;
+	float playerSpeed = 0.3f;
 	Vector2 initialPosition;
 	static Vector2 inputDir;
-	bool isMoving;
-	float percentMoved;
-	AnimationTree animationTree;
+	bool isMoving = false, canMove = true;
+	public AnimationTree animationTree;
 	static RayCast2D ray;
 
+	public void CanMove(bool canMove)
+	{
+		this.canMove = canMove;
+	}
+
+	public void ResetTilesMoved()
+	{
+		tilesMoved = 0;
+	}
+
+	public int GetTilesMoved()
+	{
+		return tilesMoved;
+	}
 
 	public static Vector2 GetInputDir()
 	{
 		return inputDir;
 	}
+
 	public override void _Ready()
 	{
-		initialPosition = Position;
-		animationTree = GetNode<AnimationTree>("AnimationTree");
+		gm = GetTree().Root.GetNode<GameManager>("GameManager");
+
+		this.SetScript(ResourceLoader.Load<Script>("res://system/Player.cs"));
+
+		initialPosition = GlobalPosition;
+		animationTree = GetTree().Root.GetNode<AnimationTree>(gm.currentScene.Name + "/Player/AnimationTree");
 		animationTree.Active = true;
-		animationTree.Set("parameters/Idle/blend_position", new Vector2(0, 1));
-		ray = GetNode<RayCast2D>("RayCast2D");
+		ray = GetTree().Root.GetNode<RayCast2D>(gm.currentScene.Name + "/Player/RayCast2D");
 	}
 
-	public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-		
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		HandleAnimation();
-		if (!isMoving)
+		if (canMove)
 		{
-			ProcessInput();
-		}
-		else if (inputDir != Vector2.Zero)
-		{
-			Move(delta);
-		}
-		else
-		{
-			isMoving = false;
+			HandleAnimation();
+			if (!isMoving)
+				ProcessInput();
+			else if (inputDir == Vector2.Zero)
+				isMoving = false;
 		}
 	}
 
@@ -89,33 +98,24 @@ public partial class Player : CharacterBody2D
 		{
 			animationTree.Set("parameters/Idle/blend_position", inputDir);
 			animationTree.Set("parameters/Walk/blend_position", inputDir);
-			initialPosition = Position;
+			initialPosition = GlobalPosition;
 			isMoving = true;
+			Move();
 		}
 	}
 
-	private void Move(double delta)
+	private async void Move()
 	{
 		ray.TargetPosition = inputDir * tileSize/2;
 		ray.ForceRaycastUpdate();
 		if (!ray.IsColliding())
 		{
-			percentMoved += speed * (float)delta;
-			if (percentMoved >=1)
-			{
-				Position = initialPosition + inputDir * tileSize;
-				isMoving = false;
-				percentMoved = 0;
-			}
-			else
-			{
-				Position = initialPosition + inputDir * tileSize * percentMoved;
-			}
+			Tween tween = GetTree().CreateTween();
+			tween.TweenProperty(this, "position", (initialPosition + inputDir * tileSize), playerSpeed);
+			await ToSignal(tween, "finished");
+			tilesMoved += 1;
 		}
-		else
-		{
-			isMoving = false;
-		}
+		isMoving = false;
 	}
 
 	private void HandleAnimation()
@@ -123,12 +123,12 @@ public partial class Player : CharacterBody2D
 		if (inputDir == Vector2.Zero)
 		{
 			animationTree.Set("parameters/conditions/isWalking", false);
-			animationTree.Set("parameters/conditions/Idle", true);
+			animationTree.Set("parameters/conditions/stopWalking", true);
 		}
 		else
 		{
 			animationTree.Set("parameters/conditions/isWalking", true);
-			animationTree.Set("parameters/conditions/Idle", false);
+			animationTree.Set("parameters/conditions/stopWalking", false);
 		}
 	}
 }

@@ -1,11 +1,8 @@
-res://scenes/void/
+res://battle/
+res://system/characters/
+res://assets/battle/
+res://zones/void/enemies/
 res://system/
-res://assets/tilesets/
-res://assets/faces/
-res://Dialogs/
-res://characters/
-res://assets/fonts/
-res://assets/
-C:/Users/Usuario/AppData/Local/Programs/Microsoft VS Code/
+res://zones/void/
 res://assets/overworld/
-res://scenes/
+res://assets/tilesets/

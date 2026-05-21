@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://6jdioc7g5277"]
+
+[ext_resource type="Script" uid="uid://bee42b0lvt2fl" path="res://battle/Battle.cs" id="1_5r4g4"]
+[ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="2_34q6o"]
+[ext_resource type="Texture2D" uid="uid://bg8rrmg7m8bb8" path="res://assets/battle/weird_laughing_rock.png" id="3_v3re7"]
+
+[node name="Battle" type="Control" unique_id=1955778982]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5r4g4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2004226016]
+layout_mode = 0
+offset_right = 816.0
+offset_bottom = 624.0
+color = Color(0.333811, 0.6492747, 0.6326787, 1)
+
+[node name="Player1Sprite" type="Sprite2D" parent="." unique_id=492402226]
+position = Vector2(668, 245)
+texture = ExtResource("2_34q6o")
+
+[node name="Enemy1Sprite" type="Sprite2D" parent="." unique_id=846343702]
+position = Vector2(198, 259)
+texture = ExtResource("3_v3re7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=208176518]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 468.0
+offset_right = 816.0
+offset_bottom = 624.0
+
+[node name="Attack" type="Button" parent="VBoxContainer" unique_id=2088811021]
+layout_mode = 2
+text = "Attack"
+
+[node name="Special" type="Button" parent="VBoxContainer" unique_id=995536546]
+layout_mode = 2
+text = "Special"
+
+[node name="Escape" type="Button" parent="VBoxContainer" unique_id=1356323240]
+layout_mode = 2
+text = "Escape"
+
+[node name="TextBackgound" type="ColorRect" parent="." unique_id=1388986366]
+layout_mode = 0
+offset_top = 468.0
+offset_right = 612.0
+offset_bottom = 624.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextBox" type="Label" parent="TextBackgound" unique_id=1053511720]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 605.0
+offset_bottom = 149.0
+text = "Text"
+
+[connection signal="pressed" from="VBoxContainer/Attack" to="." method="OnAttackPressed"]
+[connection signal="pressed" from="VBoxContainer/Special" to="." method="OnSpecialPressed"]
+[connection signal="pressed" from="VBoxContainer/Escape" to="." method="OnEscapePressed"]

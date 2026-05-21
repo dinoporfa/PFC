@@ -93,11 +93,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\cousas\\probas\\probas.csproj",
-      "projectName": "probas",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\cousas\\probas\\probas.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
+      "projectName": "tbwbs",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\cousas\\probas\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yx6sv5OrG/M=",
+  "dgSpecHash": "4yZ0SxElJYA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\cousas\\probas\\probas.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\godot.sourcegenerators\\4.6.2\\godot.sourcegenerators.4.6.2.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\godotsharp\\4.6.2\\godotsharp.4.6.2.nupkg.sha512",
