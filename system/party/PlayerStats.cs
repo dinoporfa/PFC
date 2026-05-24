@@ -4,9 +4,9 @@ using System;
 public partial class PlayerStats : Resource
 {
 	[Export]
-	String name;
+	public String name;
 	[Export]
-	Texture sprite, battleSprite, face;
+	public Texture2D sprite, battleSprite, face;
 	[Export]
-	int hp, atk, def, lvl;
+	public int hp, atk, def, lvl;
 }

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://dis3s0y6kjdi6"]
+
+[ext_resource type="Resource" uid="uid://cdkvsquw0hirf" path="res://system/party/characters/Nino.tres" id="1_ncktr"]
+[ext_resource type="Script" uid="uid://cals20yovnvv6" path="res://system/party/Party.cs" id="2_s8kow"]
+
+[resource]
+script = ExtResource("2_s8kow")
+partyMembers = [ExtResource("1_ncktr"), null, null]

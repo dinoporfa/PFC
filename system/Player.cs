@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 public partial class Player : CharacterBody2D
 {
 	GameManager gm;
+	Party party = ResourceLoader.Load<Party>("res://system/party/Party.tres");
 	const int tileSize = 16;
 	static int tilesMoved = 0;
 	float playerSpeed = 0.3f;
@@ -36,9 +37,11 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		GetNode<Sprite2D>("Sprite2D").Texture = ((PlayerStats)party.partyMembers[0]).sprite;
+		
 		gm = GetTree().Root.GetNode<GameManager>("GameManager");
 
-		this.SetScript(ResourceLoader.Load<Script>("res://system/Player.cs"));
+		
 
 		initialPosition = GlobalPosition;
 		animationTree = GetTree().Root.GetNode<AnimationTree>(gm.currentScene.Name + "/Player/AnimationTree");

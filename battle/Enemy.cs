@@ -4,9 +4,9 @@ using System;
 public partial class Enemy : Resource
 {
 	[Export]
-	String name;
+	public String name;
 	[Export]
-	Texture sprite;
+	public Texture2D sprite;
 	[Export]
-	int hp, atk, def;
+	public int hp, atk, def;
 }

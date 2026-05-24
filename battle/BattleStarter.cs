@@ -28,7 +28,7 @@ public partial class BattleStarter : Node
 	}
 
 	//por adaptar para diferentes areas(por agora só devolve enemigo 0)
-	private Enemy GetEnemy()
+	public Enemy GetEnemy()
 	{
 		String path = "res://zones/void/enemies/";
 		int enemyNumber = random.Next(0, 0);

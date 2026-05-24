@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cp6yepnx57rh7"]
 
 [ext_resource type="Script" uid="uid://ejc6ecvor0am" path="res://system/MainMenu.cs" id="1_it60u"]
-[ext_resource type="PackedScene" uid="uid://dsloqfxamf35i" path="res://system/Player.tscn" id="2_powj7"]
 
 [node name="MainMenu" type="Control" unique_id=1162460612]
 layout_mode = 3
@@ -10,9 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 script = ExtResource("1_it60u")
-
-[node name="Player" parent="." unique_id=1720023341 instance=ExtResource("2_powj7")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=885210442]
 layout_mode = 0
@@ -31,18 +29,15 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1314159548]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Options")
+button_mask = 0
 text = "Start"
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1325975866]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Start")
-focus_neighbor_bottom = NodePath("../Exit")
 text = "Options"
 
 [node name="Exit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1475268017]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Options")
 text = "Exit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="OnStartPressed"]

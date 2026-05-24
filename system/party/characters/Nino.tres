@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://cdkvsquw0hirf"]
+
+[ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="1_cyr65"]
+[ext_resource type="Script" uid="uid://8wasa0drjv7y" path="res://system/party/PlayerStats.cs" id="2_al6jx"]
+[ext_resource type="Texture2D" uid="uid://bv1auef7ioy53" path="res://assets/overworld/nino.png" id="3_2cgvk"]
+
+[resource]
+script = ExtResource("2_al6jx")
+name = "Nino"
+sprite = ExtResource("3_2cgvk")
+battleSprite = ExtResource("1_cyr65")
+hp = 10
+atk = 1
+def = 1
+lvl = 1

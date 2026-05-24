@@ -8,7 +8,23 @@ public partial class GameManager : Node
 	public override void _Ready()
 	{
 		currentScene = GetTree().CurrentScene;
-		//Input.MouseMode = Input.MouseModeEnum.Hidden;
+		
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
+	}
+
+	public async void StartPlay(String changeTo, Vector2 playerPosition)
+	{
+		pastScene = currentScene;
+		currentScene = ResourceLoader.Load<PackedScene>(changeTo).Instantiate();
+
+		GetTree().Root.CallDeferred(Node.MethodName.AddChild, currentScene);
+		await ToSignal(currentScene, Node.SignalName.Ready);
+		GetTree().Root.RemoveChild(pastScene);
+		pastScene.QueueFree();
+
+		player = GetTree().Root.GetNode<Player>(currentScene.Name + "/Player");
+		player.GlobalPosition = playerPosition;
+		player.animationTree.Set("parameters/Idle/blend_position", new Vector2(0, 1));
 	}
 
 	public async void ChangeScene(String changeTo, Vector2 playerPosition, String direction)

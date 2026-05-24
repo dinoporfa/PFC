@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj": {}
+    "C:\\Users\\loisf\\Desktop\\cousas\\tbwbs\\tbwbs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj": {
+    "C:\\Users\\loisf\\Desktop\\cousas\\tbwbs\\tbwbs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
+        "projectUniqueName": "C:\\Users\\loisf\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
         "projectName": "tbwbs",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\cousas\\tbwbs\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "C:\\Users\\loisf\\Desktop\\cousas\\tbwbs\\tbwbs.csproj",
+        "packagesPath": "C:\\Users\\loisf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\loisf\\Desktop\\cousas\\tbwbs\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\loisf\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -74,15 +74,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.27, 8.0.27]"
+              "version": "[8.0.26, 8.0.26]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.27, 8.0.27]"
+              "version": "[8.0.26, 8.0.26]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.27, 8.0.27]"
+              "version": "[8.0.26, 8.0.26]"
             }
           ],
           "frameworkReferences": {
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

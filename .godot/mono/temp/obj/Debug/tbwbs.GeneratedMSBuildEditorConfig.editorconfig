@@ -1,7 +1,7 @@
 is_global = true
 build_property.GodotDisabledSourceGenerators = 
-build_property.GodotProjectDir = C:\Users\Usuario\Desktop\cousas\tbwbs\
-build_property.GodotProjectDirBase64 = QzpcVXNlcnNcVXN1YXJpb1xEZXNrdG9wXGNvdXNhc1x0Yndic1w=
+build_property.GodotProjectDir = C:\Users\loisf\Desktop\cousas\tbwbs\
+build_property.GodotProjectDirBase64 = QzpcVXNlcnNcbG9pc2ZcRGVza3RvcFxjb3VzYXNcdGJ3YnNc
 build_property.GodotSourceGenerators = 
 build_property.IsGodotToolsProject = 
 build_property.TargetFramework = net8.0
@@ -15,7 +15,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tbwbs
-build_property.ProjectDir = C:\Users\Usuario\Desktop\cousas\tbwbs\
+build_property.ProjectDir = C:\Users\loisf\Desktop\cousas\tbwbs\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
