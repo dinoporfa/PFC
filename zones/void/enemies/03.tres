@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://b581kaqj6uk7q"]
+
+[ext_resource type="Script" uid="uid://cjn6gsh1wwwxp" path="res://battle/Enemy.cs" id="1_23lpd"]
+[ext_resource type="Texture2D" uid="uid://h1u2qqveydm3" path="res://assets/battle/enemies/ahwwf_ñam.png" id="2_23lpd"]
+
+[resource]
+script = ExtResource("1_23lpd")
+name = "Ahwwf Ñam"
+sprite = ExtResource("2_23lpd")
+hp = 10
+atk = 2
+atkPower = 2
+def = 2
+exp = 10

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://be7qords8gio8"]
+
+[ext_resource type="Script" uid="uid://bl8snqnekq5os" path="res://system/party/Class.cs" id="1_0u2ls"]
+
+[resource]
+script = ExtResource("1_0u2ls")
+className = "KindDemon"
+baseAtk = 5
+baseDef = 5
+baseHp = 5
+baseAtkPower = 5

@@ -1,15 +1,20 @@
-[gd_resource type="Resource" format=3 uid="uid://cdkvsquw0hirf"]
+[gd_resource type="Resource" format=3 uid="uid://d3ufnhs2w8rps"]
 
-[ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="1_cyr65"]
-[ext_resource type="Script" uid="uid://8wasa0drjv7y" path="res://system/party/PlayerStats.cs" id="2_al6jx"]
+[ext_resource type="Texture2D" uid="uid://dhaw754owr05k" path="res://assets/battle/nino_battle.png" id="1_al6jx"]
+[ext_resource type="Texture2D" uid="uid://4g8ixiumnse4" path="res://assets/faces/nino_face.png" id="2_2cgvk"]
+[ext_resource type="Resource" uid="uid://cw4wwjrgsvolu" path="res://system/party/classes/Child.tres" id="2_qfp4s"]
 [ext_resource type="Texture2D" uid="uid://bv1auef7ioy53" path="res://assets/overworld/nino.png" id="3_2cgvk"]
+[ext_resource type="Script" uid="uid://cpvt4c0jtx6ba" path="res://system/party/Character.cs" id="4_1nve0"]
 
 [resource]
-script = ExtResource("2_al6jx")
+script = ExtResource("4_1nve0")
 name = "Nino"
-sprite = ExtResource("3_2cgvk")
-battleSprite = ExtResource("1_cyr65")
-hp = 10
-atk = 1
-def = 1
+charClass = ExtResource("2_qfp4s")
+atk = 5
+def = 5
+maxHp = 20
+currentHp = 20
 lvl = 1
+sprite = ExtResource("3_2cgvk")
+battleSprite = ExtResource("1_al6jx")
+face = ExtResource("2_2cgvk")

@@ -20,22 +20,32 @@ public partial class BattleStarter : Node
 		tilesMoved = player.GetTilesMoved();
 		if (tilesMoved >= encounter)
 		{
-			gm.StartBattle(GetEnemy());
+			gm.StartBattle();
 			player.ResetTilesMoved();
 			encounter = random.Next(10, 20);
 		}
 
 	}
 
-	//por adaptar para diferentes areas(por agora só devolve enemigo 0)
-	public Enemy GetEnemy()
+	//por adaptar para novas areas
+	public Enemy GetEnemy(String zone)
 	{
-		String path = "res://zones/void/enemies/";
-		int enemyNumber = random.Next(0, 0);
+		Enemy enemy = new Enemy();
+		int enemyNumber;
+		String path = "res://zones/" + zone + "/enemies/";
+		if (zone == "void")	
+			enemyNumber = random.Next(0, 5);
+		else
+			enemyNumber = random.Next(0, 5);
 		if (enemyNumber < 10)
 			path += 0;
 		path += enemyNumber + ".tres";
-		Enemy enemy = ResourceLoader.Load<Enemy>(path);
+		enemy = ResourceLoader.Load<Enemy>(path);
 		return enemy;
+	}
+
+	public String GetZone()
+	{
+		return "void";
 	}
 }

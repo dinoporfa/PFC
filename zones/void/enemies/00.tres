@@ -1,12 +1,14 @@
 [gd_resource type="Resource" format=3 uid="uid://cu80pqbj2khi7"]
 
 [ext_resource type="Script" uid="uid://cjn6gsh1wwwxp" path="res://battle/Enemy.cs" id="1_mifas"]
-[ext_resource type="Texture2D" uid="uid://bg8rrmg7m8bb8" path="res://assets/battle/weird_laughing_rock.png" id="2_kfe2r"]
+[ext_resource type="Texture2D" uid="uid://bg8rrmg7m8bb8" path="res://assets/battle/enemies/weird_laughing_rock.png" id="2_kfe2r"]
 
 [resource]
 script = ExtResource("1_mifas")
-name = "Weird Laughing Rock"
+name = "Laughing Rock"
 sprite = ExtResource("2_kfe2r")
-hp = 10
-atk = 1
-def = 1
+hp = 15
+atk = 3
+atkPower = 3
+def = 3
+exp = 10

@@ -37,7 +37,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
-		GetNode<Sprite2D>("Sprite2D").Texture = ((PlayerStats)party.partyMembers[0]).sprite;
+		GetNode<Sprite2D>("Sprite2D").Texture = ((Character)party.partyMembers[0]).sprite;
 		
 		gm = GetTree().Root.GetNode<GameManager>("GameManager");
 

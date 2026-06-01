@@ -1,10 +1,12 @@
-res://assets/
-res://system/
-res://assets/battle/
-res://assets/overworld/
-res://system/party/
 res://system/party/characters/
+res://system/party/classes/
+res://system/party/
+res://assets/battle/
+res://assets/battle/enemies/
 res://battle/
 res://zones/void/enemies/
+res://system/
+res://assets/
+res://assets/overworld/
 res://zones/void/
 res://assets/tilesets/

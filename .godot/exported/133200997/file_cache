@@ -1,0 +1,12 @@
+res://assets/animations.tres::7ab966e617da88d46ccc40171cc37fc9::1779968288::res://.godot/exported/133200997/export-7ae146657970c8801eff9ee6d74e7b17-animations.res
+res://battle/Battle.tscn::f4ea8d52c625e706edc37d8dfb77f3cf::1780042373::res://.godot/exported/133200997/export-0239764c63dcc5fff9eebf4fcca5a797-Battle.scn
+res://battle/GameOver.tscn::e4f31f56ac5f4ab4dea0d59fea2b4b2c::1780049502::res://.godot/exported/133200997/export-fc4c240f76a3c0dcbf9f0415bded5e30-GameOver.scn
+res://system/party/characters/Courtney.tres::f04e808adf4fc3449c8d40c95428ca5b::1780048472::res://.godot/exported/133200997/export-f25bc7d1288d9b38085e3f60763ccb9a-Courtney.res
+res://system/party/characters/Nino.tres::d187900185455b3c71e0f59b3eb17fc4::1780049502::res://.godot/exported/133200997/export-172e0cc163ec1e3cfc3b8ecaeaebe80c-Nino.res
+res://system/party/Party.tres::09c646e572f37878718c79fdf5d96332::1779968288::res://.godot/exported/133200997/export-ff34eababd1e5b18cc253fa86bf858db-Party.res
+res://system/MainMenu.tscn::478aadd2e77d1c966d3fac607c2732da::1779968288::res://.godot/exported/133200997/export-fed2fa0ed09df770301fda37adc4fc46-MainMenu.scn
+res://system/Player.tscn::206dd62aba3ad703e30dd204c74c3acd::1779968288::res://.godot/exported/133200997/export-15182168bd8f504c9ae7ae7f891c72ca-Player.scn
+res://zones/void/enemies/00.tres::152b8a8f125c9730b9f69f5c8f0475b7::1780049502::res://.godot/exported/133200997/export-2d1504b7aa98c343ba38fd74be262484-00.res
+res://zones/void/Boulder.tscn::9867523aed1b93353c3b14987c91410c::1779968288::res://.godot/exported/133200997/export-6a33d8ab29c834e52cab26cd9c3c3b39-Boulder.scn
+res://zones/void/Puzzle1.tscn::c5b9174fc0a4a631c55173a7a381afa9::1779968288::res://.godot/exported/133200997/export-97d22e6ceda5385c147ff74d9f68e6c8-Puzzle1.scn
+res://zones/void/Void.tscn::374efed493532d95534916e9e8c026a5::1779968288::res://.godot/exported/133200997/export-9d182f584cdb7513c765d9dc5500c37d-Void.scn

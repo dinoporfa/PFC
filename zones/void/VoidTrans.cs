@@ -15,7 +15,7 @@ public partial class VoidTrans : Area2D
 	{
 		if (body == player)
 		{
-			gm.ChangeScene("res://zones/void/Puzzle1.tscn", new Vector2(12*16, 15*16) , "up");
+			gm.ChangeMapScene("res://zones/void/Puzzle1.tscn", new Vector2(12*16, 16*16) , "up");
 		}
 	}
 
@@ -23,7 +23,7 @@ public partial class VoidTrans : Area2D
 	{
 		if (body == player)
 		{
-			gm.ChangeScene("res://zones/void/Void.tscn", new Vector2(135*16, 1*16) , "down");
+			gm.ChangeMapScene("res://zones/void/Void.tscn", new Vector2(135*16, 1*16) , "down");
 		}
 	}
 }

@@ -1,8 +1,9 @@
 [gd_resource type="Resource" format=3 uid="uid://dis3s0y6kjdi6"]
 
-[ext_resource type="Resource" uid="uid://cdkvsquw0hirf" path="res://system/party/characters/Nino.tres" id="1_ncktr"]
+[ext_resource type="Resource" uid="uid://d3ufnhs2w8rps" path="res://system/party/characters/Nino.tres" id="1_ncktr"]
 [ext_resource type="Script" uid="uid://cals20yovnvv6" path="res://system/party/Party.cs" id="2_s8kow"]
+[ext_resource type="Resource" uid="uid://baq1tquc2hyp0" path="res://system/party/characters/Courtney.tres" id="2_voqjj"]
 
 [resource]
 script = ExtResource("2_s8kow")
-partyMembers = [ExtResource("1_ncktr"), null, null]
+partyMembers = [ExtResource("1_ncktr"), ExtResource("2_voqjj")]
