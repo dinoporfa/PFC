@@ -35,8 +35,7 @@ Este é o repositorio do Proxecto de Fin de Ciclo DAM 2026, o cal trátade dun p
 Para executar o proxecto, por agora, debemos facelo a través de godot, polo que debemos ter este instalado.
 <ol>
   <li>Primeiro descargamos o repositorio</li>
-  <li>A continuación, a través de godot, abrimos o documento "project.godot".</li>
-  <li>Por último, unha vez este cargue os arquivos, clicamos o símbolo de "play" na esquina superior dereita.</li>
+  <li>A continuación, abrimos tbwbs.exe</li>
 </ol>
 
 <h2>Tecnoloxías utilizadas</h2>
