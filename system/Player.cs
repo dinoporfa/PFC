@@ -37,11 +37,15 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
-		GetNode<Sprite2D>("Sprite2D").Texture = ((PlayerStats)party.partyMembers[0]).sprite;
+		for (int i = 0; i < party.partyMembers.Length; i++)
+		{
+			((Character)party.partyMembers[i]).CalcStats();
+			((Character)party.partyMembers[i]).currentHp = ((Character)party.partyMembers[i]).maxHp;
+		}
+
+		GetNode<Sprite2D>("Sprite2D").Texture = ((Character)party.partyMembers[0]).sprite;
 		
 		gm = GetTree().Root.GetNode<GameManager>("GameManager");
-
-		
 
 		initialPosition = GlobalPosition;
 		animationTree = GetTree().Root.GetNode<AnimationTree>(gm.currentScene.Name + "/Player/AnimationTree");

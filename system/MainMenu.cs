@@ -11,6 +11,12 @@ public partial class MainMenu : Control
 		GetNode<Button>("CenterContainer/VBoxContainer/Start").GrabFocus();
 	}
 
+    public override void _Input(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed("a"))
+			Call("On" + GetViewport().GuiGetFocusOwner().Name + "Pressed");
+    }
+
 	private void OnStartPressed()
 	{
 		gm.StartPlay("res://zones/void/Void.tscn", new Vector2(13*16, 12*16));

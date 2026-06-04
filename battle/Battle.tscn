@@ -2,7 +2,154 @@
 
 [ext_resource type="Script" uid="uid://bee42b0lvt2fl" path="res://battle/Battle.cs" id="1_5r4g4"]
 [ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="2_34q6o"]
-[ext_resource type="Texture2D" uid="uid://bg8rrmg7m8bb8" path="res://assets/battle/weird_laughing_rock.png" id="3_v3re7"]
+[ext_resource type="Texture2D" uid="uid://dhaw754owr05k" path="res://assets/battle/nino_battle.png" id="2_v3re7"]
+[ext_resource type="Texture2D" uid="uid://ix0c8e6rcxmw" path="res://assets/battle/enemies/ahwwf.png" id="4_34q6o"]
+
+[sub_resource type="Animation" id="Animation_5r4g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy1Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player2Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wuq8c"]
+resource_name = "enemy1Defeated"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_34q6o"]
+resource_name = "rockHit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r8nfv"]
+resource_name = "player1Defeated"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v3re7"]
+resource_name = "playerHit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jhxqk"]
+resource_name = "player2Defeated"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player2Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dgjnm"]
+resource_name = "player2Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player2Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgjnm"]
+_data = {
+&"RESET": SubResource("Animation_5r4g4"),
+&"enemy1Defeated": SubResource("Animation_wuq8c"),
+&"enemy1Hit": SubResource("Animation_34q6o"),
+&"player1Defeated": SubResource("Animation_r8nfv"),
+&"player1Hit": SubResource("Animation_v3re7"),
+&"player2Defeated": SubResource("Animation_jhxqk"),
+&"player2Hit": SubResource("Animation_dgjnm")
+}
 
 [node name="Battle" type="Control" unique_id=1955778982]
 layout_mode = 3
@@ -14,21 +161,6 @@ grow_vertical = 2
 mouse_behavior_recursive = 1
 script = ExtResource("1_5r4g4")
 
-[node name="TextBackground" type="ColorRect" parent="." unique_id=1101876275]
-layout_mode = 0
-offset_top = 468.0
-offset_right = 816.0
-offset_bottom = 624.0
-color = Color(0, 0, 0, 1)
-
-[node name="TextBox" type="Label" parent="TextBackground" unique_id=144920183]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 809.0
-offset_bottom = 149.0
-text = "Text"
-
 [node name="Background" type="ColorRect" parent="." unique_id=2004226016]
 layout_mode = 0
 offset_right = 816.0
@@ -36,12 +168,76 @@ offset_bottom = 624.0
 color = Color(0.333811, 0.6492747, 0.6326787, 1)
 
 [node name="Player1Sprite" type="Sprite2D" parent="." unique_id=492402226]
-position = Vector2(668, 245)
+position = Vector2(662, 239)
+texture = ExtResource("2_v3re7")
+
+[node name="Player1HpBar" type="ProgressBar" parent="." unique_id=1776763834]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74500006
+anchor_top = 0.43600002
+anchor_right = 0.88400006
+anchor_bottom = 0.47900003
+offset_left = 0.079956055
+offset_top = -0.06402588
+offset_right = -0.34405518
+offset_bottom = 1.3559875
+value = 50.0
+show_percentage = false
+
+[node name="Player1Hp" type="Label" parent="Player1HpBar" unique_id=2072638278]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Sprite" type="Sprite2D" parent="." unique_id=1399886007]
+position = Vector2(662, 371.5)
 texture = ExtResource("2_34q6o")
 
+[node name="Player2HpBar" type="ProgressBar" parent="." unique_id=671974679]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74500006
+anchor_top = 0.43600002
+anchor_right = 0.88400006
+anchor_bottom = 0.47900003
+offset_left = 0.079956055
+offset_top = 125.435974
+offset_right = -0.34405518
+offset_bottom = 125.60397
+value = 50.0
+show_percentage = false
+
+[node name="Player2Hp" type="Label" parent="Player2HpBar" unique_id=477118362]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Enemy1Sprite" type="Sprite2D" parent="." unique_id=846343702]
-position = Vector2(198, 259)
-texture = ExtResource("3_v3re7")
+position = Vector2(109, 246)
+texture = ExtResource("4_34q6o")
+
+[node name="Enemy2Sprite" type="Sprite2D" parent="." unique_id=641870874]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(283, 349)
+texture = ExtResource("4_34q6o")
+
+[node name="Enemy3Sprite" type="Sprite2D" parent="." unique_id=11840678]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(283, 108)
+texture = ExtResource("4_34q6o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=208176518]
 layout_mode = 0
@@ -58,13 +254,17 @@ text = "Attack"
 layout_mode = 2
 text = "Special"
 
+[node name="Check" type="Button" parent="VBoxContainer" unique_id=1425299150]
+layout_mode = 2
+text = "Check"
+
 [node name="Escape" type="Button" parent="VBoxContainer" unique_id=1356323240]
 layout_mode = 2
 text = "Escape"
 
 [node name="MenuTextBackgound" type="ColorRect" parent="." unique_id=1388986366]
 layout_mode = 0
-offset_top = 468.0
+offset_top = 466.0
 offset_right = 612.0
 offset_bottom = 624.0
 color = Color(0, 0, 0, 1)
@@ -77,11 +277,31 @@ anchor_top = 0.045
 anchor_right = 0.989
 anchor_bottom = 0.95500004
 offset_left = 0.26799965
-offset_top = -0.020000458
+offset_top = -2.1099968
 offset_right = -0.26800537
 offset_bottom = 0.019989014
+text = "MenuText"
+
+[node name="TextBackground" type="ColorRect" parent="." unique_id=1101876275]
+visible = false
+layout_mode = 0
+offset_top = 466.0
+offset_right = 816.0
+offset_bottom = 624.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextBox" type="Label" parent="TextBackground" unique_id=144920183]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 809.0
+offset_bottom = 149.0
 text = "Text"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=972414784]
+libraries/ = SubResource("AnimationLibrary_dgjnm")
 
 [connection signal="pressed" from="VBoxContainer/Attack" to="." method="OnAttackPressed"]
 [connection signal="pressed" from="VBoxContainer/Special" to="." method="OnSpecialPressed"]
+[connection signal="pressed" from="VBoxContainer/Check" to="." method="OnCheckPressed"]
 [connection signal="pressed" from="VBoxContainer/Escape" to="." method="OnEscapePressed"]

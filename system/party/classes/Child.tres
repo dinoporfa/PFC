@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://cw4wwjrgsvolu"]
+
+[ext_resource type="Script" uid="uid://bl8snqnekq5os" path="res://system/party/Class.cs" id="1_utkuq"]
+
+[resource]
+script = ExtResource("1_utkuq")
+className = "Child"
+baseAtk = 8
+baseDef = 6
+baseHp = 15
+baseMp = 15
+baseAtkPower = 3

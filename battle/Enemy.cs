@@ -8,5 +8,6 @@ public partial class Enemy : Resource
 	[Export]
 	public Texture2D sprite;
 	[Export]
-	public int hp, atk, def;
+	public int hp, atk, atkPower, def, exp;
+
 }

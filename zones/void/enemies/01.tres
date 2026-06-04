@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://c0byaa66qklwh"]
+
+[ext_resource type="Script" uid="uid://cjn6gsh1wwwxp" path="res://battle/Enemy.cs" id="1_jp5hx"]
+[ext_resource type="Texture2D" uid="uid://dm7d8avmbgwqe" path="res://assets/battle/enemies/aww.png" id="2_wmbga"]
+
+[resource]
+script = ExtResource("1_jp5hx")
+name = "Aww"
+sprite = ExtResource("2_wmbga")
+hp = 5
+atk = 1
+atkPower = 1
+def = 1
+exp = 10

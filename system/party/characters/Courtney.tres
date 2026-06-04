@@ -1,16 +1,17 @@
 [gd_resource type="Resource" format=3 uid="uid://baq1tquc2hyp0"]
 
-[ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="1_h4p6w"]
-[ext_resource type="Script" uid="uid://8wasa0drjv7y" path="res://system/party/PlayerStats.cs" id="2_xb4ce"]
-[ext_resource type="Texture2D" uid="uid://bpsov4oreqc2u" path="res://assets/overworld/courtney.png" id="3_mal65"]
+[ext_resource type="Texture2D" uid="uid://lnvkk7cv1hps" path="res://assets/battle/courtney_battle.png" id="1_mal65"]
+[ext_resource type="Resource" uid="uid://be7qords8gio8" path="res://system/party/classes/KindDemon.tres" id="2_s0nn3"]
+[ext_resource type="Texture2D" uid="uid://02eu3lnnakh3" path="res://assets/faces/courtney_face.png" id="3_qkr8d"]
+[ext_resource type="Script" uid="uid://cpvt4c0jtx6ba" path="res://system/party/Character.cs" id="4_bo18o"]
+[ext_resource type="Texture2D" uid="uid://bpsov4oreqc2u" path="res://assets/overworld/courtney.png" id="5_hhtcc"]
 
 [resource]
-script = ExtResource("2_xb4ce")
+script = ExtResource("4_bo18o")
 name = "Courtney"
-sprite = ExtResource("3_mal65")
-battleSprite = ExtResource("1_h4p6w")
-characterId = 1
-hp = 10
-atk = 1
-def = 1
+charClass = ExtResource("2_s0nn3")
+currentHp = 1
 lvl = 1
+sprite = ExtResource("5_hhtcc")
+battleSprite = ExtResource("1_mal65")
+face = ExtResource("3_qkr8d")
