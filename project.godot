@@ -21,12 +21,17 @@ GameManager="*uid://c13dr4qiv0067"
 
 [display]
 
-window/size/viewport_width=816
-window/size/viewport_height=624
+window/size/viewport_width=800
+window/size/viewport_height=600
 
 [dotnet]
 
 project/assembly_name="tbwbs"
+
+[gui]
+
+theme/default_theme_scale=1.25
+theme/custom_font="uid://hjpqdhy0u6kv"
 
 [input]
 

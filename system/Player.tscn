@@ -21,6 +21,70 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_6jlqg"]
+resource_name = "colliding_down"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_r6nd7"]
+resource_name = "colliding_left"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_nu1hl"]
+resource_name = "colliding_right"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 7]
+}
+
+[sub_resource type="Animation" id="Animation_tkwas"]
+resource_name = "Colliding_Up"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 10, 9, 10]
+}
+
 [sub_resource type="Animation" id="Animation_m0bgt"]
 resource_name = "down"
 length = 1.2
@@ -164,6 +228,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6nd7"]
 _data = {
 &"RESET": SubResource("Animation_lwfsl"),
+&"colliding_down": SubResource("Animation_6jlqg"),
+&"colliding_left": SubResource("Animation_r6nd7"),
+&"colliding_right": SubResource("Animation_nu1hl"),
+&"colliding_up": SubResource("Animation_tkwas"),
 &"down": SubResource("Animation_m0bgt"),
 &"idle_down": SubResource("Animation_ya4jx"),
 &"idle_left": SubResource("Animation_fhomg"),
@@ -173,6 +241,28 @@ _data = {
 &"right": SubResource("Animation_bee4a"),
 &"up": SubResource("Animation_1mvn3")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hawqu"]
+animation = &"colliding_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bh380"]
+animation = &"colliding_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_puomq"]
+animation = &"colliding_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h7k0h"]
+animation = &"colliding_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fb70y"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_hawqu")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_bh380")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_puomq")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_h7k0h")
+blend_point_3/pos = Vector2(1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lwfsl"]
 animation = &"idle_left"
@@ -225,13 +315,15 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r6nd7"]
 advance_mode = 2
-advance_condition = &"isWalking"
+advance_condition = &"IdleToWalk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nu1hl"]
 advance_mode = 2
-advance_condition = &"stopWalking"
+advance_condition = &"WalkToIdle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hawqu"]
+states/Colliding/node = SubResource("AnimationNodeBlendSpace2D_fb70y")
+states/Colliding/position = Vector2(434, 21.599998)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_nu1hl")
 states/Idle/position = Vector2(336, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_1mvn3")
@@ -264,7 +356,12 @@ autoplay = &"idle_down"
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=672476104]
 tree_root = SubResource("AnimationNodeStateMachine_hawqu")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/isWalking = false
-parameters/conditions/stopWalking = false
+parameters/conditions/CollidingToIdle = false
+parameters/conditions/CollidingToWalk = false
+parameters/conditions/IdleToColliding = false
+parameters/conditions/IdleToWalk = false
+parameters/conditions/WalkToColliding = false
+parameters/conditions/WalkToIdle = false
+parameters/Colliding/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)

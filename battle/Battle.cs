@@ -13,8 +13,8 @@ public partial class Battle : Control
 	GameManager gm;
 	Party party = ResourceLoader.Load<Party>("res://system/party/Party.tres");
 	BattleStarter battleStarter = new BattleStarter();
-	Label textBox, menuTextBox, player1HpLabel, player2HpLabel;
-	ColorRect textBoxBackground;
+	Label textBox, player1HpLabel, player2HpLabel;
+	VBoxContainer actionMenu;
 	Button atkButton, spcButton, escButton;
 	ProgressBar player1HpBar, player2HpBar;
 	AnimationPlayer animationPlayer;
@@ -33,20 +33,18 @@ public partial class Battle : Control
 		GetViewport().GuiReleaseFocus();
 		gm = GetTree().Root.GetNode<GameManager>("GameManager");
 		
-		atkButton = GetNode<Button>("VBoxContainer/Attack");
-		spcButton = GetNode<Button>("VBoxContainer/Special");
-		escButton = GetNode<Button>("VBoxContainer/Escape");
+		actionMenu = GetNode<VBoxContainer>("ActionMenu");
+		atkButton = GetNode<Button>("ActionMenu/Attack");
+		spcButton = GetNode<Button>("ActionMenu/Special");
+		escButton = GetNode<Button>("ActionMenu/Escape");
 		player1HpBar = GetNode<ProgressBar>("Player1HpBar");
 		player1HpLabel = GetNode<Label>("Player1HpBar/Player1Hp");
 		player2HpBar = GetNode<ProgressBar>("Player2HpBar");
 		player2HpLabel = GetNode<Label>("Player2HpBar/Player2Hp");
-		menuTextBox = textBox = GetNode<Label>("MenuTextBackgound/MenuTextBox");
 		textBox = GetNode<Label>("TextBackground/TextBox");
-		textBoxBackground = GetNode<ColorRect>("TextBackground");
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		textBox.Show();
-		textBoxBackground.Show();
+		actionMenu.Hide();
 
 		//list de xogadores
 		for (int i = 0; i < party.partyMembers.Length; i++)
@@ -92,15 +90,14 @@ public partial class Battle : Control
 		player2HpLabel.Text = players[1].currentHp + "/" + players[0].maxHp;
 
 		playerTurn = 0;
-		while(players[playerTurn].isDead)
+		while(players[playerTurn].currentHp == 0)
 		{
 			playerTurn++;
 		}
 
-		menuTextBox.Text = "What should " + players[0].name + " do?";
 		await ToSignal(this, SignalName.APressed);
-		textBox.Hide();
-		textBoxBackground.Hide();
+		textBox.Text = "What should " + players[0].name + " do?";textBox.Text = "What should " + players[0].name + " do?";
+		actionMenu.Show();
 		atkButton.GrabFocus();
     }
 
@@ -116,20 +113,23 @@ public partial class Battle : Control
 		{
 			if (Input.IsActionJustPressed("a"))
 			{
-				if (textBox.Visible)
-					EmitSignal(SignalName.APressed);
-				else
-					Call("On" + GetViewport().GuiGetFocusOwner().Name + "Pressed");
+			if (!actionMenu.Visible)
+				EmitSignal(SignalName.APressed);
+			else
+				Call("On" + GetViewport().GuiGetFocusOwner().Name + "Pressed");
 			}
-			else if(Input.IsActionJustPressed("b"))
+			else
 			{
-				if (!textBox.Visible)
+				if(Input.IsActionJustPressed("b"))
 				{
-					if (queue.Count > 0)
+					if (!textBox.Visible)
 					{
-						queue.RemoveAt(queue.Count - 1);
-						playerTurn--;
-						menuTextBox.Text = "What should " + players[playerTurn].name + " do?";
+						if (queue.Count > 0)
+						{
+							queue.RemoveAt(queue.Count - 1);
+							playerTurn--;
+							textBox.Text = "What should " + players[playerTurn].name + " do?";
+						}
 					}
 				}
 			}
@@ -143,11 +143,7 @@ public partial class Battle : Control
 		for (int i = 0; i < enemies.Count; i++)
 		{
 			enemyId = i;
-			do
-			{
-				playerAttacked = GetAlivePlayers()[random.Next(0, GetAlivePlayers().Count)];
-			}while(players[playerAttacked] == null);
-			
+			playerAttacked = GetAlivePlayers()[random.Next(0, GetAlivePlayers().Count)];
 			queue.Add( () => EnemyAttack(enemyId, playerAttacked));
 		}
 		
@@ -161,7 +157,7 @@ public partial class Battle : Control
 
 	private async void OnAttackPressed()
 	{
-		while(players[playerTurn].isDead)
+		while(players[playerTurn].currentHp == 0)
 		{
 			playerTurn++;
 		}
@@ -176,18 +172,19 @@ public partial class Battle : Control
 
 			playerTurn = 0;
 			if (GetAlivePlayers().Count > 0)
-				while(players[playerTurn].isDead)
+				while(players[playerTurn].currentHp == 0)
 				{
 					playerTurn++;
 				}
 		}
-		menuTextBox.Text = "What should " + players[playerTurn].name + " do?";
+		textBox.Text = "What should " + players[playerTurn].name + " do?";
+		atkButton.GrabFocus();
 	}
 
 	private async Task PlayerAttack(int playerId, int enemyId)
 	{
-		textBox.Show();
-		textBoxBackground.Show();
+		actionMenu.Hide();
+		GetViewport().GuiReleaseFocus();
 		int dmg;
 
 		animationPlayer.Play("enemy" + (enemyId+1) + "Hit");
@@ -226,14 +223,12 @@ public partial class Battle : Control
 			gm.EndBattle();
 		}
 		
-		textBox.Hide();
-		textBoxBackground.Hide();
+		actionMenu.Show();
 	}
 
 	private async Task EnemyAttack(int enemyId, int playerId)
 	{
-		textBox.Show();
-		textBoxBackground.Show();
+		actionMenu.Hide();
 
 		animationPlayer.Play("player" + (playerId + 1) + "Hit");
 
@@ -295,29 +290,55 @@ public partial class Battle : Control
 			await PlayerDefeated(playerId);
 		}
 			
-		textBox.Hide();
-		textBoxBackground.Hide();
+		actionMenu.Show();
+		atkButton.GrabFocus();
 	}
 
 	private async void OnSpecialPressed()
 	{
-		menuTextBox.Text = "Esto non está programado :(";
+		textBox.Text = "Esto non está programado :(";
 		await Task.Delay(500);
-		menuTextBox.Text = "What should " + players[playerTurn].name + " do?";
+		textBox.Text = "What should " + players[playerTurn].name + " do?";
 	}
 
 	private async void OnCheckPressed()
 	{
-		menuTextBox.Text = "Esto tampouco está programado :(";
-		await Task.Delay(500);
-		menuTextBox.Text = "What should " + players[playerTurn].name + " do?";
+		while(players[playerTurn].currentHp == 0)
+		{
+			playerTurn++;
+		}
+
+		queue.Add( () =>EnemyCheck(0));
+
+		playerTurn++;
+		if (playerTurn >= GetAlivePlayers().Count)
+		{
+			await Play();
+
+			playerTurn = 0;
+			if (GetAlivePlayers().Count > 0)
+				while(players[playerTurn].currentHp == 0)
+				{
+					playerTurn++;
+				}
+		}
+		textBox.Text = "What should " + players[playerTurn].name + " do?";
+		atkButton.GrabFocus();
+	}
+
+	private async Task EnemyCheck(int enemyId)
+	{
+		GetViewport().GuiReleaseFocus();
+		actionMenu.Hide();
+
+		textBox.Text = enemies[enemyId].name + "\nAttack: " + enemies[enemyId].atk + "\nDefense: " + enemies[enemyId].def;
+		await ToSignal(this, SignalName.APressed);
 	}
 
 	private async void OnEscapePressed()
 	{
 		GetViewport().GuiReleaseFocus();
-		textBox.Show();
-		textBoxBackground.Show();
+		actionMenu.Hide();
 		int esc;
 		esc = random.Next(0, 101);
 		if (esc <= 80)
@@ -336,16 +357,24 @@ public partial class Battle : Control
 		
 	}
 
+	private List<int> GetAlivePlayers()
+	{
+		List<int> alivePlayers = new List<int>();
+		for (int i = 0; i < players.Count; i++)
+			if (players[i].currentHp > 0)
+				alivePlayers.Add(i);
+
+		return alivePlayers;
+	}
+
 	private async Task PlayerDefeated(int playerId)
 	{
 		animationPlayer.Play("player" + (playerId+1) + "Defeated");
 
-		textBox.Text = players[playerId].name + " was defeted!";
+		textBox.Text = players[playerId].name + " was defeated!";
 		await ToSignal(this, SignalName.APressed);
 
-		players[playerId].isDead = true;
-
-		if (players[0].isDead && players[1].isDead)
+		if (players[0].currentHp == 0 && players[1].currentHp == 0)
 		{
 			textBox.Text = "...";
 			await ToSignal(this, SignalName.APressed);
@@ -359,7 +388,7 @@ public partial class Battle : Control
 	{
 		animationPlayer.Play("enemy" + (enemyId+1) + "Defeated");
 
-		textBox.Text = enemies[enemyId].name + " was defeted!";
+		textBox.Text = enemies[enemyId].name + " was defeated!";
 		await ToSignal(this, SignalName.APressed);
 		
 		await ExpGain(enemyId);
@@ -389,22 +418,59 @@ public partial class Battle : Control
 
 	private async Task LvlUp(int charId)
 	{
+		ColorRect lvlUpBackground;
+		Label lvl, hp, mp, atk, def, ability;
+		int lastHp, lastMp, lastAtk, lastDef;
+		lvlUpBackground = GetNode<ColorRect>("LvlUpMenu");
+		lvl = GetNode<Label>("LvlUpMenu/VBoxContainer/LvlUp");
+		hp = GetNode<Label>("LvlUpMenu/VBoxContainer/HpUp");
+		mp = GetNode<Label>("LvlUpMenu/VBoxContainer/MpUp");
+		atk = GetNode<Label>("LvlUpMenu/VBoxContainer/AtkUp");
+		def = GetNode<Label>("LvlUpMenu/VBoxContainer/DefUp");
+		ability = GetNode<Label>("LvlUpMenu/VBoxContainer/NewAbility");
+		lastHp = ((Character)party.partyMembers[charId]).maxHp;
+		lastMp = ((Character)party.partyMembers[charId]).maxMp;
+		lastAtk = ((Character)party.partyMembers[charId]).atk;
+		lastDef = ((Character)party.partyMembers[charId]).def;
+
+
+		textBox.Text = ((Character)party.partyMembers[charId]).name + " leveled up!";
+		lvlUpBackground.Show();
+
+		lvl.Text = "Level Up!\n" + ((Character)party.partyMembers[charId]).lvl + " -> " + (((Character)party.partyMembers[charId]).lvl + 1);
+		hp.Text = "Hp = " + lastHp;
+		mp.Text = "Mp = " + lastMp;
+		atk.Text = "Atk = " + lastAtk;
+		def.Text = "Def = " + lastDef;
+
 		((Character)party.partyMembers[charId]).lvl += 1;
-			
 		((Character)party.partyMembers[charId]).CalcStats();
 
-		textBox.Text = ((Character)party.partyMembers[charId]).name + " leveled up to level " + ((Character)party.partyMembers[0]).lvl + "!";
-		
+		if (((Character)party.partyMembers[charId]).maxHp - lastHp != 0)
+		{
+			hp.Text += " + " + (((Character)party.partyMembers[charId]).maxHp - lastHp);
+		}
+		if (((Character)party.partyMembers[charId]).maxMp - lastMp != 0)
+		{
+			mp.Text += " + " + (((Character)party.partyMembers[charId]).maxMp - lastMp);
+		}
+		if (((Character)party.partyMembers[charId]).atk - lastAtk != 0)
+		{
+			atk.Text += " + " + (((Character)party.partyMembers[charId]).atk - lastAtk);
+		}
+		if (((Character)party.partyMembers[charId]).def - lastDef != 0)
+		{
+			def.Text += " + " + (((Character)party.partyMembers[charId]).def - lastDef);
+		}
+		ability.Text = "";
 		await ToSignal(this, SignalName.APressed);
-	}
 
-	private List<int> GetAlivePlayers()
-	{
-		List<int> alivePlayers = new List<int>();
-		for (int i = 0; i < players.Count; i++)
-			if (!players[i].isDead)
-				alivePlayers.Add(i);
+		hp.Text = "Hp = " + ((Character)party.partyMembers[charId]).maxHp;
+		mp.Text = "Mp = " + ((Character)party.partyMembers[charId]).maxMp;
+		atk.Text = "Atk = " + ((Character)party.partyMembers[charId]).atk;
+		def.Text = "Def = " + ((Character)party.partyMembers[charId]).def;
+		await ToSignal(this, SignalName.APressed);
 
-		return alivePlayers;
+		lvlUpBackground.Hide();
 	}
 }

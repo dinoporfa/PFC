@@ -24,7 +24,6 @@ public partial class GameOver : Control
 			((Character)party.partyMembers[i]).currentHp = ((Character)party.partyMembers[i]).maxHp;
 			((Character)party.partyMembers[i]).exp = 0;
 			((Character)party.partyMembers[i]).lvl = 1;
-			((Character)party.partyMembers[i]).isDead = false;
 		}
 		gm.StartPlay("res://zones/void/Void.tscn", new Vector2(13*16, 12*16));
 	}

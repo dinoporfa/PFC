@@ -16,8 +16,8 @@ public partial class Boulder : CharacterBody2D
 	{
 		if(playerRay.GetCollider() == this)
 		{
-			if (Player.GetInputDir() != Vector2.Zero)
-				inputDir = Player.GetInputDir();
+			if (Player.GetPlayerInputDir() != Vector2.Zero)
+				inputDir = Player.GetPlayerInputDir();
 			if (Input.IsActionJustPressed("a"))
 			{
 				objectRay.TargetPosition = inputDir * tileSize/2;

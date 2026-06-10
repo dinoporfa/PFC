@@ -1,1 +1,16 @@
+res://system/MainMenu.cs
+res://system/GameManager.cs
+res://battle/Battle.cs
+res://system/party/Class.cs
+res://battle/BattleStarter.cs
+res://system/Player.cs
+res://battle/GameOver.cs
+res://zones/void/VoidDialog.cs
+res://zones/void/Boulder.cs
+res://zones/void/VoidTrans.cs
+res://system/party/Party.cs
+res://battle/Enemy.cs
+res://system/party/Character.cs
 res://battle/Battle.tscn
+res://battle/GameOver.tscn
+res://system/MainMenu.tscn

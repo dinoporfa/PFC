@@ -7,7 +7,7 @@
 script = ExtResource("1_5eve3")
 name = "Patooty"
 sprite = ExtResource("2_5eve3")
-hp = 1
+hp = 5
 atk = 1
 atkPower = 1
 def = 1

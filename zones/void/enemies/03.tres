@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_23lpd")
-name = "Ahwwf Ñam"
+name = "Ahwwf Nom"
 sprite = ExtResource("2_23lpd")
 hp = 5
 atk = 1

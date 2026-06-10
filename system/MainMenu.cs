@@ -22,12 +22,17 @@ public partial class MainMenu : Control
 		gm.StartPlay("res://zones/void/Void.tscn", new Vector2(13*16, 12*16));
 	}
 
+	private void OnContinuePressed()
+	{
+		
+	}
+
 	private void OnOptionsPressed()
 	{
 		lastButton = (Button)GetViewport().GuiGetFocusOwner();
 	}
 
-	private void OnExitPressed()
+	private void OnQuitPressed()
 	{
 		GetTree().Quit();
 	}

@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	Party party = ResourceLoader.Load<Party>("res://system/party/Party.tres");
 	const int tileSize = 16;
 	static int tilesMoved = 0;
-	float playerSpeed = 0.3f;
+	float playerMovementDelay = 0.3f;
 	Vector2 initialPosition;
 	static Vector2 inputDir;
 	bool isMoving = false, canMove = true;
@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
 		return tilesMoved;
 	}
 
-	public static Vector2 GetInputDir()
+	public static Vector2 GetPlayerInputDir()
 	{
 		return inputDir;
 	}
@@ -118,7 +118,7 @@ public partial class Player : CharacterBody2D
 		if (!ray.IsColliding())
 		{
 			Tween tween = GetTree().CreateTween();
-			tween.TweenProperty(this, "position", (initialPosition + inputDir * tileSize), playerSpeed);
+			tween.TweenProperty(this, "position", initialPosition + inputDir * tileSize, playerMovementDelay);
 			await ToSignal(tween, "finished");
 			tilesMoved += 1;
 		}
@@ -129,13 +129,13 @@ public partial class Player : CharacterBody2D
 	{
 		if (inputDir == Vector2.Zero)
 		{
-			animationTree.Set("parameters/conditions/isWalking", false);
-			animationTree.Set("parameters/conditions/stopWalking", true);
+			animationTree.Set("parameters/conditions/IdleToWalk", false);
+			animationTree.Set("parameters/conditions/WalkToIdle", true);
 		}
 		else
 		{
-			animationTree.Set("parameters/conditions/isWalking", true);
-			animationTree.Set("parameters/conditions/stopWalking", false);
+			animationTree.Set("parameters/conditions/IdleToWalk", true);
+			animationTree.Set("parameters/conditions/WalkToIdle", false);
 		}
 	}
 }

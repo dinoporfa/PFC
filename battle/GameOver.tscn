@@ -14,15 +14,15 @@ script = ExtResource("1_8aoex")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=280653724]
 layout_mode = 0
-offset_right = 816.0
-offset_bottom = 624.0
+offset_right = 800.0
+offset_bottom = 600.0
 color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=178301028]
 layout_mode = 0
 offset_top = 312.0
-offset_right = 816.0
-offset_bottom = 624.0
+offset_right = 800.0
+offset_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1426883561]
 layout_mode = 2

@@ -8,10 +8,8 @@ public partial class Character : Resource
 	[Export]
 	public Class charClass;
 	[Export]
-	public int currentHp, lvl, exp;
+	public int currentHp, currentMp, lvl, exp;
 	public int atk, def, maxHp, maxMp, atkPower;
-	[Export]
-	public bool isDead;
 	[Export]
 	public Texture2D sprite, battleSprite, face;
 

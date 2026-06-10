@@ -36,7 +36,10 @@ public partial class BattleStarter : Node
 		if (zone == "void")	
 			enemyNumber = random.Next(0, 5);
 		else
+		{
+			//implementar crash
 			enemyNumber = random.Next(0, 5);
+		}
 		if (enemyNumber < 10)
 			path += 0;
 		path += enemyNumber + ".tres";
